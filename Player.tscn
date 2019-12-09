@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://PNG/playerShip1_green.png" type="Texture" id=2]
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.57079
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 5.03067, -48.2349, -1.76354, -36.2641, 11.1778, -11.999, 36.09, -7.46956, 36.4135, 7.41301, 10.5308, 11.9425, -2.08707, 34.2663, 6.00127, 47.5312, -24.4109, 43.3253, -26.6757, 12.266, -37.3523, 7.73654, -37.6758, -8.44016, -27.3227, -14.2638, -24.4109, -46.2937 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 66.2063, 0 )
+
+[node name="CoolDown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 5.03067, -48.2349, -1.76354, -36.2641, 11.1778, -11.999, 36.09, -7.46956, 36.4135, 7.41301, 10.5308, 11.9425, -2.08707, 34.2663, 6.00127, 47.5312, -24.4109, 43.3253, -26.6757, 12.266, -37.3523, 7.73654, -37.6758, -8.44016, -27.3227, -14.2638, -24.4109, -46.2937 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
